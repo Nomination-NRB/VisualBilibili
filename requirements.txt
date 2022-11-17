@@ -1,0 +1,7 @@
+jieba==0.42.1
+pandas==1.2.4
+pymysql==1.0.2
+requests==2.25.1
+torch==1.13.0
+torchtext==0.14.0
+tqdm==4.64.0

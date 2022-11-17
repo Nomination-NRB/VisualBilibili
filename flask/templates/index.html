@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../static/css/base.css" rel="stylesheet">
+    <title>大屏展示</title>
+</head>
+
+<body>
+    <div class="container-fluid container-fluid-s">
+        <div class="row">
+            <div class="col-md-12 col-lg-6 mrbt">
+                <div class="totalbox">
+                    <ul class="nav nav-pills totaltitle" role="tablist">
+                        <li class="fl">
+                            <p>视频数据分析</p>
+                        </li>
+                    </ul>
+                    <div class="totaltem">
+                        <div class="col-md-12 total hbule">
+                            <span class="name">评分</span>
+                            <span class="number">
+                                <a class="score">0</a>
+                                <a class="score">0</a>
+                                <a class="score">0</a>
+                                <a class="score">0</a>
+                                <a class="score">0</a>
+                                <a class="score">0</a>
+                                <a class="score">0</a>
+                                <a class="score">0</a>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="row" style="padding: 0 2vw">
+                        <div class="col-md-2">
+                            <div class="column">
+                                <p>关注数</p>
+                                <div class="purple"><span class="bold">0</span></div>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="column">
+                                <p>粉丝数</p>
+                                <div class="grn"><span class="bold">0</span></div>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="column">
+                                <p>获赞数</p>
+                                <div class="bule"><span class="bold">0</span></div>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="column">
+                                <p>播放数</p>
+                                <div class="yel"><span class="bold">0</span></div>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="column">
+                                <p>阅读数</p>
+                                <div class="org"><span class="bold">0</span></div>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="column">
+                                <p>视频数</p>
+                                <div class="org"><span class="bold">0</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 mrbt">
+                <div class="totalbox">
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-pills totaltitle" role="tablist">
+                        <li class="fl">
+                            <p>个人视频排行</p>
+                        </li>
+                    </ul>
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane active" id="home">
+                            <div id="container1" style="width: 100%;height: 100%;"></div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="profile">
+                            <div id="container2" style="width: 100%;height: 400px;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 mrbt">
+                <div class="totalbox">
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-pills totaltitle" role="tablist">
+                        <li class="fl">
+                            <p>稿件时长统计</p>
+                        </li>
+                        <li role="presentation" class="active fr"></li>
+                    </ul>
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane active" id="jglx">
+                            <div id="jglxchart" style="width: 100%;height: 100%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 col-lg-3 mrbt">
+                <div class="totalbox">
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-pills totaltitle" role="tablist">
+                        <li class="fl">
+                            <p>粉丝</p>
+                        </li>
+                        <li role="presentation" class="active fr"></li>
+                        <li role="presentation" class=" fr"></li>
+                    </ul>
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <!-- 做一个动态滚动条，分为三个栏目，up名字，评论内容，结果为0/1 -->
+                        <div class="tab-content">
+                            <div class="head">
+                                <span class="colTemp">时间</span>
+                                <span class="colTemp">名字</span>
+                                <span class="colTemp">性别</span>
+                            </div>
+                            <div class="marquee-view">
+                                <div class="marquee">
+                                    <div class="row">
+                                        <span class="col"></span>
+                                        <span class="col"></span>
+                                        <span class="col">1</span>
+                                    </div>
+                                    <div class="row">
+                                        <span class="col"></span>
+                                        <span class="col"></span>
+                                        <span class="col">2</span>
+                                    </div>
+                                    <div class="row">
+                                        <span class="col"></span>
+                                        <span class="col"></span>
+                                        <span class="col">3</span>
+                                    </div>
+                                    <div class="row">
+                                        <span class="col"></span>
+                                        <span class="col"></span>
+                                        <span class="col">4</span>
+                                    </div>
+                                    <div class="row">
+                                        <span class="col"></span>
+                                        <span class="col"></span>
+                                        <span class="col">5</span>
+                                    </div>
+                                    <div class="row">
+                                        <span class="col"></span>
+                                        <span class="col"></span>
+                                        <span class="col">6</span>
+                                    </div>
+                                    <div class="row">
+                                        <span class="col"></span>
+                                        <span class="col"></span>
+                                        <span class="col">7</span>
+                                    </div>
+                                    <div class="row">
+                                        <span class="col"></span>
+                                        <span class="col"></span>
+                                        <span class="col">8</span>
+                                    </div>
+                                    <div class="row">
+                                        <span class="col"></span>
+                                        <span class="col"></span>
+                                        <span class="col">9</span>
+                                    </div>
+                                    <div class="row">
+                                        <span class="col"></span>
+                                        <span class="col"></span>
+                                        <span class="col">10</span>
+                                    </div>
+                                    <div class="row">
+                                        <span class="col"></span>
+                                        <span class="col"></span>
+                                        <span class="col">11</span>
+                                    </div>
+                                    <div class="row">
+                                        <span class="col"></span>
+                                        <span class="col"></span>
+                                        <span class="col">12</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 mrbt">
+                <div class="totalbox">
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-pills totaltitle" role="tablist">
+                        <li class="fl">
+                            <p>评论情绪</p>
+                        </li>
+                        <li role="presentation" class="fr"></li>
+                        <li role="presentation" class="active  fr"></li>
+                    </ul>
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane" id="rj-month">
+                            <div id="rj-monthchart" style="width: 100%;height: 100%;"></div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane active" id="rj-day">
+                            <div id="rj-daychart" style="width: 100%;height: 100%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 mrbt">
+                <div class="totalbox">
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-pills totaltitle" role="tablist">
+                        <li class="fl">
+                            <p>总览信息</p>
+                        </li>
+                        <li role="presentation" class="active fr"></li>
+                        <li role="presentation" class=" fr"></li>
+                    </ul>
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane active" id="fbt-month">
+                            <div id="fbt-monthchart" style="width: 100%;height: 100%;"></div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="fbt-day">
+                            <div id="fbt-daychart" style="width: 100%;height: 100%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 mrbt">
+                <div class="totalbox">
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-pills totaltitle" role="tablist">
+                        <li class="fl">
+                            <p>稿件详情</p>
+                        </li>
+                        <li role="presentation" class="active fr"></li>
+                    </ul>
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane active" id="zxlx">
+                            <div id="zxlxchart" style="width: 100%;height: 100%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <script src="../static/js/jquery.min.js"></script>
+    <script src="http://cdn.hcharts.cn/highcharts/highcharts.js"></script>
+    <script src="../static/js/bootstrap.js/"></script>
+    <script src="../static/js/oldie.js"></script>
+    <script src="../static/js/highcharts-zh_CN.js"></script>
+    <script src="../static/js/base.js"></script>
+    <script src="../static/js/control.js"></script>
+    <script src="../static/js/dynamicScroll.js"></script>
+    <script src="../static/js/fans.js"></script>
+    <script type="text/javascript">
+    </script>
+</body>
+
+</html>
