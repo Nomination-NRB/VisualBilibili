@@ -61,60 +61,60 @@ VisualBilibili
 ├─ Data
 │	├─ fansData								//爬取的粉丝数据
 │	│	└─ 237733293_fans_data.csv
-│	├─ overViewData							//爬取的个人主页的总览数据
+│	├─ overViewData						//爬取的个人主页的总览数据
 │	│	└─ 237733293_overview_data.csv
 │	├─ reviewData							//爬取的所有视频详细信息数据，此处仅列出2个
 │	│	├─ BV12Q4y1C7VK.csv
 │	│	├─ BV12S4y1r7Hv.csv
-│	├─ reviewForInfer						//深度学习所需数据
+│	├─ reviewForInfer					//深度学习所需数据
 │	│	├─ result.csv						//review.csv: 用于预测的评论
 │	│	├─ review.csv						//result.csv: 预测的结果
-│	│	└─ reviewResult.csv					//review与result的合并结果
+│	│	└─ reviewResult.csv			//review与result的合并结果
 │	├─ sumData								//所有视频评论的汇总
 │	│	└─ sumReviewData.csv
 │	├─ videoData							//所有视频的简介信息
 │	│	└─ 237733293_video_data.csv
-│	└─ videoDetailData						//所有视频的详细信息
+│	└─ videoDetailData				//所有视频的详细信息
 │	 	└─ 237733293_videoDetail_data.csv
 │
-├─ collect_data								//爬虫文件夹
+├─ collect_data							//爬虫文件夹
 │	├─ Trash.py								//清空Data文件夹下所有的csv文件
 │	├─ getBVid.py							//获得所有视频的BV号
-│	├─ getReview.py							//获得所有视频的评论
-│	├─ getUserInfo.py						//获得所有视频信息及用户信息
+│	├─ getReview.py						//获得所有视频的评论
+│	├─ getUserInfo.py					//获得所有视频信息及用户信息
 │	├─ getfans.py							//获得up的粉丝信息
 │	└─ main.py								//爬虫执行总文件，会执行以上四个get.py文件
 │
-├─ flask									//前后端文件夹
-│	├─ data									//用于测试前后端的数据
+├─ flask									  //前后端文件夹
+│	├─ data									  //用于测试前后端的数据
 │	│	├─ 237733293_fans_data.csv
 │	│	├─ 237733293_follow_data.csv
 │	│	├─ 237733293_videoDetail_data.csv
 │	│	└─ 237733293_video_data.csv
-│	├─ datavisualization.sql				//样例uid的数据，直接存入数据库，可不用执行爬虫main.py
+│	├─ datavisualization.sql	//样例uid的数据，直接存入数据库，可不用执行爬虫main.py
 │	├─ linkSQL.py							//若使用样例uid，则运行次文件(可测试函数)
-│	├─ linkSQLData.py						/若使用自定义uid，则该运行此文件(将数据写入数据库)
+│	├─ linkSQLData.py					//若使用自定义uid，则该运行此文件(将数据写入数据库)
 │	├─ manage.py
-│	├─ static								//前端静态样式，后端的js逻辑
+│	├─ static								  //前端静态样式，后端的js逻辑
 │	│	├─ css
 │	│	├─ fonts
 │	│	└─ js
 │	└─ templates
 │	 	└─ index.html						//可视化页面
 │
-├─ motion_classification					//深度学习情感分类文件夹
-│	├─ Data									//用于测试的文本数据
+├─ motion_classification		//深度学习情感分类文件夹
+│	├─ Data									  //用于测试的文本数据
 │	│	├─ reviewTest.csv
 │	│	└─ test.txt
-│	├─ data_utils.py						//情感预测所需的函数
-│	├─ inference.py							//情感预测
+│	├─ data_utils.py					//情感预测所需的函数
+│	├─ inference.py						//情感预测
 │	├─ models															
 │	│	└─ BiRNN.py							//深度神经网络
 │	└─ output
 │	 	├─ model.pt							//训练好的模型
-│	 	└─ model.vocab						//词汇表
+│	 	└─ model.vocab					//词汇表
 ├─ README.md
-└─ requirements.txt							//本项目所需的库
+└─ requirements.txt					//本项目所需的库
 ```
 
 
