@@ -121,6 +121,12 @@ VisualBilibili
 
 ## 使用方法
 
+```bash
+git clone https://github.com/Nomination-NRB/VisualBilibili
+```
+
+在vscode或者其他编译器打开项目文件夹
+
 激活本项目具体使用的环境，切换到requirements.txt目录下在终端执行该命令即可
 
 ```python
@@ -133,7 +139,7 @@ pip install -r requirements.txt
 
    2. 将flask文件夹下的datavisualization.sql文件导入到数据库中：
 
-      1. mysql 默认以gbk编码连接数据库，之前导出备份文件是utf8编码，编码不一致导致错误。
+      1. mysql 默认以gbk编码连接数据库，导出备份文件是utf8编码，编码不一致导致出现错误
 
          **解决**：`mysql -u root -p --default-character-set=utf8` 以utf8编码连接
 
