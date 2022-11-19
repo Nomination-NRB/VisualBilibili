@@ -171,6 +171,47 @@ pip install -r requirements.txt
 
 
 
+## 附录
+
+相关接口，mid是账号的uid，样例mid采取163004010
+
+- 获取用户详细信息（只需修改mid的值）
+
+```
+https://api.bilibili.com/x/space/acc/info?mid=163004010
+```
+
+- 获取uid的粉丝列表（只需修改vmid的值）
+
+```
+https://api.bilibili.com/x/relation/followers?vmid=163004010&pn=1&ps=200
+```
+
+- 获取该uid关注列表中的用户（只需修改vmid的值）
+
+```
+https://api.bilibili.com/x/relation/followings?vmid=163004010&pn=1
+```
+
+- 获取uid=237733293的视频信息（因为uid=163004010的用户没有视频，所以更换样例）
+
+```
+https://api.bilibili.com/x/space/arc/search?mid=237733293&ps=30&tid=0&pn=1&keyword=&order=pubdate&jsonp
+```
+
+- 获取用户个人主页右上角的总览信息（只需修改mid的值）
+
+```
+https://api.bilibili.com/x/space/upstat?mid=163004010&jsonp=jsonp
+https://api.bilibili.com/x/relation/stat?vmid=163004010&jsonp=jsonp
+```
+
+
+
+
+
+
+
 
 
 
