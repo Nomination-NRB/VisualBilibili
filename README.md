@@ -67,8 +67,8 @@ VisualBilibili
 │	│	├─ BV12Q4y1C7VK.csv
 │	│	├─ BV12S4y1r7Hv.csv
 │	├─ reviewForInfer···························//深度学习所需数据
-│	│	├─ result.csv···························//review.csv: 用于预测的评论
-│	│	├─ review.csv···························//result.csv: 预测的结果
+│	│	├─ result.csv···························//result.csv: 预测的结果
+│	│	├─ review.csv···························//review.csv: 用于预测的评论
 │	│	└─ reviewResult.csv·····················//review与result的合并结果
 │	├─ sumData··································//所有视频评论的汇总
 │	│	└─ sumReviewData.csv
