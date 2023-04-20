@@ -4,6 +4,7 @@
 
 爬取B站up视频详细信息，并进行可视化
 
+由于本项目的爬虫是单线程，所以选择的up主数据量**建议小于3000**，如果你能优化到多线程加速，欢迎pull request
 
 
 ### 技术栈
@@ -16,7 +17,7 @@
 
 数据库：MySQL
 
-深度学习：BiRNN->LSTM训练模型（本项目仅提供训练好的模型）
+深度学习：BiRNN->LSTM训练模型（情感分类仓库：https://github.com/Nomination-NRB/SentimentClassify）
 
 
 
