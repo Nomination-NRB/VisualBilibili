@@ -207,6 +207,9 @@ https://api.bilibili.com/x/space/upstat?mid=163004010&jsonp=jsonp
 https://api.bilibili.com/x/relation/stat?vmid=163004010&jsonp=jsonp
 ```
 
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=Nomination-NRB/VisualBilibili&type=Date)](https://star-history.com/#Nomination-NRB/VisualBilibili&Date)
 
 
 
