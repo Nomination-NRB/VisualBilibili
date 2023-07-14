@@ -212,33 +212,3 @@ https://api.bilibili.com/x/relation/stat?vmid=163004010&jsonp=jsonp
 [![Star History Chart](https://api.star-history.com/svg?repos=Nomination-NRB/VisualBilibili&type=Date)](https://star-history.com/#Nomination-NRB/VisualBilibili&Date)
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
