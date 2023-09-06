@@ -17,7 +17,7 @@
 
 数据库：MySQL
 
-深度学习：BiRNN->LSTM训练模型（情感分类仓库：https://github.com/Nomination-NRB/SentimentClassify）
+深度学习：BiRNN->LSTM训练模型，情感分类仓库：https://github.com/Nomination-NRB/SentimentClassify
 
 
 
