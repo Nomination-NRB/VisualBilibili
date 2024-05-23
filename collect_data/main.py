@@ -6,7 +6,7 @@ import getUserInfo
 
 if __name__ == "__main__":
     # 输入某个用户的uid
-    uid = '237733293'
+    uid = '179696233'
 
     # 获得该用户总览信息：关注数，粉丝数，播放数，阅读数
     # 输出：[90, 349, 256766, 0]
@@ -24,6 +24,6 @@ if __name__ == "__main__":
     getUserInfo.upSumVideoDetail(uid)
 
     # 获得该用户的视频BV号
-    bvlist = getBVid.getBVidMain()
+    aidlist = getBVid.getAidMain()
     # 获得每个视频BV的评论
-    getReview.getReviewMain(bvlist)
+    getReview.getReviewMain(aidlist)

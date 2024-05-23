@@ -25,6 +25,21 @@ def get_bvlist(csvlist):
     return result
 
 
+def get_avlist(csvlist):
+    result = []
+    for csv in csvlist:
+        df = pd.read_csv('../Data/videoData/{}'.format(csv))
+        for index, row in df.iterrows():
+            bvstr = str(row['aid'])
+            result.append(bvstr)
+    return result
+
+def getAidMain():
+    csvlist = get_csv_list()
+    bvlist = get_avlist(csvlist)
+    print('get_avlist()执行完毕！\n')
+    return bvlist
+
 def getBVidMain():
     csvlist = get_csv_list()
     bvlist = get_bvlist(csvlist)

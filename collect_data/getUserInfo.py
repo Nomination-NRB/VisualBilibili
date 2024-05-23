@@ -2,37 +2,31 @@ import time
 import requests
 import csv
 import math
-import json as json
+import wbi
+import json
 
 requests.DEFAULT_RETRIES = 5  # 增加重试连接次数
 s = requests.session()
 s.keep_alive = False  # 关闭多余连接
+img_key, sub_key = wbi.getWbiKeys()
+
+
 # 请求头
-# 'Referer': 'https://space.bilibili.com/546195/fans/fans',
-header = {
+headers = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:76.0) Gecko/20100101 Firefox/76.0',
     'Accept': 'application/json, text/plain, */*',
     'Accept-Language': 'zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2',
     'Origin': 'https://space.bilibili.com',
     'Connection': 'keep-alive',
+    'Referer': 'https://space.bilibili.com/546195/fans/fans',
     'Cache-Control': 'max-age=0',
-    'referer': 'https://space.bilibili.com/163004010?spm_id_from=333.1007.0.0',
-    'cookie': 'buvid3=E946D92C-82FA-A965-9B0E-A7BF9B4FC3DD37201infoc; i-wanna-go-back=-1; '
-              '_uuid=6DB6715B-CFAE-3D7E-10F9C-FDFF14B667E237159infoc; '
-              'buvid4=48819C9D-BFB2-3AD8-FD64-9A26B8ECF6CD39245-022090614-PFJkqvvsrkodK2nau9jSVg==; '
-              'buvid_fp_plain=undefined; b_ut=5; b_nut=100; hit-dyn-v2=1; nostalgia_conf=-1; '
-              'LIVE_BUVID=AUTO4816633296181216; CURRENT_QUALITY=80; hit-new-style-dyn=0; DedeUserID=163004010; '
-              'DedeUserID__ckMd5=9fa28f62f412dc2b; CURRENT_FNVAL=4048; PVID=1; SESSDATA=8a32740e,1683707055,'
-              '4c0c0*b1; bili_jct=9711c0fcfbf8d9709266ca110a229f43; sid=7be7372l; '
-              'fingerprint=a4c2f8e998556d660f20d241a0d98cfa; buvid_fp=8c65888b35583fa3e532447581e582dd; '
-              'bp_video_offset_163004010=727230270818746400; b_lsid=752FD4106_18466FD77C5; innersign=0 '
+    'cookie': "buvid3=51EC002A-20D3-5382-D942-D06DAFCC03EE25241infoc; b_nut=1701741925; i-wanna-go-back=-1; b_ut=7; _uuid=5CD54E68-4E109-7EB3-4E93-B6133710C4106825145infoc; enable_web_push=DISABLE; buvid4=48819C9D-BFB2-3AD8-FD64-9A26B8ECF6CD39245-022090614-PFJkqvvsrkodK2nau9jSVg==; header_theme_version=CLOSE; CURRENT_FNVAL=4048; rpdid=|(mmkYYmuYu0J'u~|u~Rk||J; buvid_fp_plain=undefined; hit-dyn-v2=1; DedeUserID=163004010; DedeUserID__ckMd5=9fa28f62f412dc2b; FEED_LIVE_VERSION=V_WATCHLATER_PIP_WINDOW3; CURRENT_QUALITY=80; bp_video_offset_163004010=925309906047729762; home_feed_column=5; PVID=1; browser_resolution=1536-712; fingerprint=ce2e86c39d090ec82ebbbd064a59c679; bili_ticket=eyJhbGciOiJIUzI1NiIsImtpZCI6InMwMyIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MTY1NDc4NTEsImlhdCI6MTcxNjI4ODU5MSwicGx0IjotMX0.DpACwtK4pYN1k6R-QRio9yWCiynJ8H9LxMZOdZtWJsc; bili_ticket_expires=1716547791; SESSDATA=8c6b0950,1731905824,0f46c*51CjDfcEnKKACLNTD3A51J7NZp5rr-1HOd-ldKUCfDEgsBUJ3OIb8RLeQ14vYcd392Jx4SVndZUzFDbnFoczZwSHluTzcxMWJSZjJIQ1F2UmxwNGpkRUk4dUU1LTdpb1J1bTJuR1BoUVRtb2cwNFgxRFdabGZqcXhLVzlVaFZaQ2tENGdDRTlYNTJ3IIEC; bili_jct=8cfca3c687ab5cc98fadfed8c0510a2e; bp_t_offset_163004010=934238498819407891; b_lsid=4E49FE7E_18FA1084A0F; buvid_fp=51EC002A-20D3-5382-D942-D06DAFCC03EE25241infoc"
 }
-
 
 # 获取该用户关注列表中的用户
 def getNextUsers(userId):
     follow_text = requests.get("https://api.bilibili.com/x/relation/followings?vmid={}&pn=1".format(userId),
-                               headers=header).text
+                               headers=headers).text
     follow_json = json.loads(follow_text)
     # 筛选未设置隐私的用户
     if follow_json['code'] != 0:
@@ -42,11 +36,10 @@ def getNextUsers(userId):
         follow_num = follow_json['data']['total']
         # 获取pn数
         pns = math.ceil(follow_num / 50)
-        urls = ["https://api.bilibili.com/x/relation/followings?vmid={}&pn={}".format(userId, i) for i in
-                range(1, pns + 1)]
+        urls = ["https://api.bilibili.com/x/relation/followings?vmid={}&pn={}".format(userId, i) for i in range(1, pns + 1)]
         follow_data = []
         for url in urls:
-            text = requests.get(url, headers=header).text
+            text = requests.get(url, headers=headers).text
             j = json.loads(text)
             try:
                 user_list = j['data']['list']
@@ -121,62 +114,63 @@ def upVideo(uid):
     print('正在获取用户{}的视频信息...'.format(uid))
     n = 1
     id_num = 1
-    while True:
-        url = f'https://api.bilibili.com/x/space/arc/search?mid={uid}&ps=30&tid=0&pn={n}&keyword=&order=pubdate&jsonp' \
-              f'=jsonp '
-        r = requests.get(url, headers=header)
-        _json = json.loads(r.text)
-        v_list = _json.get('data').get('list').get('vlist')
-        n += 1
-        if len(v_list) != 0:  # 程序终止标志
-            result = []
-            for video in v_list:
-                once = []
-                video_title = video.get('title')  # 标题
-                video_aid = video.get('aid')  # av号
-                video_bvid = video.get('bvid')  # BV号
-                # video_play_num = video.get('play')  # 播放数量
-                # video_comment_num = video.get('comment')  # 当前评论数量
-                # video_danmu_num = video.get('video_review')  # 弹幕数量
-                video_created_ = video.get('created')  #
-                timeArray = time.localtime(video_created_)
-                video_created = time.strftime("%Y-%m-%d %H:%M:%S", timeArray)  # 时间字符串格式化
-                video_length = video.get('length')  # 视频长度
-                video_description = video.get('description')  # 视频描述
-                video_link = 'https://www.bilibili.com/video/' + video_bvid  # 链接地址：固定开头+BV号
-                id_num += 1
-                once.append(video_title)
-                once.append(video_aid)
-                once.append(video_bvid)
-                once.append(video_created)
-                once.append(video_length)
-                once.append(video_description)
-                once.append(video_link)
-                result.append(once)
-        else:
-            print(f'[----------------------------爬取了{id_num - 1}个视频----------------------------]')
-            print('用户{}的视频信息爬取完毕！\n'.format(uid))
-            # 只返回aid那一列
-            return result, [i[1] for i in result]
+    signed_params = wbi.encWbi(
+        params={
+            'mid': uid
+        },
+        img_key=img_key,
+        sub_key=sub_key
+    )
+    url = 'https://api.bilibili.com/x/space/wbi/arc/search'
+    r = requests.get(url, params=signed_params, headers=headers)
+    _json = json.loads(r.text)
+    v_list = _json.get('data').get('list').get('vlist')
+    n += 1
+    result = []
+    for video in v_list:
+        once = []
+        video_title = video.get('title')  # 标题
+        video_aid = video.get('aid')  # av号
+        video_bvid = video.get('bvid')  # BV号
+        video_created_ = video.get('created')  #
+        timeArray = time.localtime(video_created_)
+        video_created = time.strftime("%Y-%m-%d %H:%M:%S", timeArray)  # 时间字符串格式化
+        video_length = video.get('length')  # 视频长度
+        video_description = video.get('description')  # 视频描述
+        video_link = 'https://www.bilibili.com/video/' + video_bvid  # 链接地址：固定开头+BV号
+        id_num += 1
+        once.append(video_title)
+        once.append(video_aid)
+        once.append(video_bvid)
+        once.append(video_created)
+        once.append(video_length)
+        once.append(video_description)
+        once.append(video_link)
+        result.append(once)
+        print(f'已爬取{id_num - 1}个视频 => {video_title} {video_created}')
+
+    print(f'[----------------------------爬取了{id_num - 1}个视频----------------------------]')
+    print('用户{}的视频信息爬取完毕！\n'.format(uid))
+    # 只返回aid那一列
+    return result, [i[1] for i in result]
 
 
 def upVideoDetail(aid):
-    url = r'https://api.bilibili.com/x/web-interface/archive/stat?aid={}'.format(aid)
+    url = r'https://api.bilibili.com/x/web-interface/view?aid={}'.format(aid)
     # 获取url
-    response = requests.get(url, timeout=30, headers=header)
+    response = requests.get(url, timeout=30, headers=headers)
     text = response.text
     jsonobj = json.loads(text)
-
     # 从Json对象获取视频基本信息并转入词典中
     video_dict = {'aid': jsonobj['data']['aid'],
                   'bvid': jsonobj['data']['bvid'],
-                  'view': jsonobj['data']['view'],
-                  'danmuku_num': jsonobj['data']['danmaku'],
-                  'reply_num': jsonobj['data']['reply'],
-                  'favorite_num': jsonobj['data']['favorite'],
-                  'coin_num': jsonobj['data']['coin'],
-                  'share_num': jsonobj['data']['share'],
-                  'like_num': jsonobj['data']['like']
+                  'view': jsonobj['data']['stat']['view'],
+                  'danmuku_num': jsonobj['data']['stat']['danmaku'],
+                  'reply_num': jsonobj['data']['stat']['reply'],
+                  'favorite_num': jsonobj['data']['stat']['favorite'],
+                  'coin_num': jsonobj['data']['stat']['coin'],
+                  'share_num': jsonobj['data']['stat']['share'],
+                  'like_num': jsonobj['data']['stat']['like']
                   }
     # 直接返回aid,view,danmuku_num,reply_num,favorite_num,coin_num,share_num,like_num
     return [video_dict['aid'], video_dict['view'], video_dict['danmuku_num'], video_dict['reply_num'], video_dict['favorite_num'], video_dict['coin_num'], video_dict['share_num'], video_dict['like_num']]
@@ -187,9 +181,9 @@ def upSumVideoDetail(uid):
     print('正在获取用户{}的视频详细信息...'.format(uid))
     _, result = upVideo(uid)
     temp = []
-    for i in result:
+    for index, i in enumerate(result):
         temp.append(upVideoDetail(i))
-        time.sleep(1)
+        print('已爬取uid={} aid={}的视频详细信息，第{}个视频'.format(uid, i, index + 1))
     write_videoDetail_csv(temp, uid)
 
 
@@ -206,8 +200,8 @@ def getOverview(uid):
     print('正在获取用户{}的总关注数，粉丝数，播放数，阅读数...'.format(uid))
     url1 = 'https://api.bilibili.com/x/relation/stat?vmid={}&jsonp=jsonp'.format(uid)
     url2 = 'https://api.bilibili.com/x/space/upstat?mid={}&jsonp=jsonp'.format(uid)
-    r1 = requests.get(url1, headers=header)
-    r2 = requests.get(url2, headers=header)
+    r1 = requests.get(url1, headers=headers)
+    r2 = requests.get(url2, headers=headers)
     json1 = json.loads(r1.text)
     json2 = json.loads(r2.text)
     # 关注数
@@ -240,12 +234,11 @@ if __name__ == '__main__':
     uid = '237733293'
     # res = getNextUsers(uid)
     # print(res)
-    res = getOverview(uid)
-    print(res)
+    # res = getOverview(uid)
+    # print(res)
     # writeOverview_csv(res, uid)
-
     # upSumVideo(uid)
 
-    # upSumVideoDetail(uid)
+    upSumVideoDetail(uid)
 
 
