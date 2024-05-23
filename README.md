@@ -174,7 +174,7 @@ pip install -r requirements.txt
 
 ## 附录
 
-更多api请参考https://github.com/SocialSisterYi/bilibili-API-collect/issues?q=oid
+更多api请参考https://github.com/SocialSisterYi/bilibili-API-collect
 
 相关接口，mid是账号的uid，样例mid采取163004010
 
